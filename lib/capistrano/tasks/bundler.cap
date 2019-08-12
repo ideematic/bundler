@@ -86,7 +86,7 @@ namespace :load do
     set :bundle_jobs, 4
     set :bundle_env_variables, {}
     set :bundle_clean_options, ""
-    set :bundle_check_before_install, true,
+    set :bundle_check_before_install, true
     set :bundle_version, ""
   end
 end
