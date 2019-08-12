@@ -20,6 +20,7 @@ namespace :bundler do
           set :bundle_jobs, nil
           set :bundle_env_variables, {}
           set :bundle_clean_options, ""
+          set :bundle_version, ""
     DESC
   task :install do
     on fetch(:bundle_servers) do
@@ -36,7 +37,7 @@ namespace :bundler do
             options << "--jobs #{fetch(:bundle_jobs)}" if fetch(:bundle_jobs)
             options << "--without #{fetch(:bundle_without)}" if fetch(:bundle_without)
             options << "#{fetch(:bundle_flags)}" if fetch(:bundle_flags)
-            execute :bundle, :install, *options
+            execute :bundle, "#{fetch(:bundle_version)}", :install, *options
           end
         end
       end
@@ -85,6 +86,7 @@ namespace :load do
     set :bundle_jobs, 4
     set :bundle_env_variables, {}
     set :bundle_clean_options, ""
-    set :bundle_check_before_install, true
+    set :bundle_check_before_install, true,
+    set :bundle_version, ""
   end
 end
